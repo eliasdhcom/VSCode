@@ -36,13 +36,11 @@ Please also see following documents:
 
 ## 🚀How to use
 
-Open PowerShell and run:
+Open PowerShell, run this command and choose `1` (Dark) or `2` (Light). It installs the theme in VS Code, activates it and cleans up after itself.
 
 ```powershell
 irm https://raw.githubusercontent.com/eliasdhcom/VSCode/main/install.ps1 | iex
 ```
-
-This installs the theme in VS Code, activates **EliasDH Dark** and cleans up after itself. Switch to **EliasDH Light** any time with `Ctrl+K` `Ctrl+T`.
 
 ## 🔗Links
 - 👯 Web hosting company [EliasDH.com](https://eliasdh.com).

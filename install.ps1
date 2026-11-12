@@ -7,6 +7,12 @@
 # Usage: irm https://raw.githubusercontent.com/eliasdhcom/VSCode/main/install.ps1 | iex
 
 & {
+    Write-Host ''
+    Write-Host 'Choose a theme:' -ForegroundColor Cyan
+    Write-Host '  1) EliasDH Dark'
+    Write-Host '  2) EliasDH Light'
+    $choice = Read-Host 'Enter 1 or 2 (default 1)'
+    $themeName = if ($choice.Trim() -eq '2') { 'EliasDH Light' } else { 'EliasDH Dark' }
     $ErrorActionPreference = 'Stop'
     $ProgressPreference = 'SilentlyContinue'
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -41,15 +47,15 @@
     # 4. Activate the theme in the user settings
     $dir = Join-Path $env:APPDATA 'Code\User'
     $settings = Join-Path $dir 'settings.json'
-    $entry = '"workbench.colorTheme": "EliasDH Dark"'
+    $entry = "`"workbench.colorTheme`": `"$themeName`""
     New-Item -ItemType Directory -Force -Path $dir | Out-Null
     $json = if (Test-Path $settings) { [IO.File]::ReadAllText($settings) } else { '' }
     if ([string]::IsNullOrWhiteSpace($json)) { $json = "{`n}`n" }
     $pattern = '"workbench\.colorTheme"\s*:\s*"[^"]*"'
     if ($json -match $pattern) { $json = $json -replace $pattern, $entry }
     elseif ($json -match '^\s*\{') { $json = $json -replace '^\s*\{', "{`n    $entry," }
-    else { Write-Host 'Installed. Select "EliasDH Dark" with Ctrl+K Ctrl+T.' -ForegroundColor Green; return }
+    else { Write-Host "Installed. Select `"$themeName`" with Ctrl+K Ctrl+T." -ForegroundColor Green; return }
     [IO.File]::WriteAllText($settings, $json, (New-Object Text.UTF8Encoding $false))
 
-    Write-Host 'EliasDH theme installed and activated.' -ForegroundColor Green
+    Write-Host "$themeName installed and activated." -ForegroundColor Green
 }
