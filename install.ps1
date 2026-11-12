@@ -23,15 +23,20 @@
     if (-not $code) { Write-Host 'VS Code was not found. Install it from https://code.visualstudio.com first.' -ForegroundColor Red; return }
 
     # 2. Download the latest .vsix to a temp folder
-    $version = ((Invoke-WebRequest "$repo/package.json" -UseBasicParsing).Content | ConvertFrom-Json).version
+    $pkg = Invoke-RestMethod "$repo/package.json" -UseBasicParsing
+    if ($pkg -is [string]) { $pkg = $pkg | ConvertFrom-Json }
+    $version = $pkg.version
     $vsix = Join-Path $env:TEMP "eliasdh-theme-$version.vsix"
     Write-Host "Downloading EliasDH theme $version..." -ForegroundColor Cyan
     Invoke-WebRequest "$repo/Release/eliasdh-theme-$version.vsix" -OutFile $vsix -UseBasicParsing
 
     # 3. Install it, then clean up
-    try { & $code --install-extension $vsix --force 2>$null | Out-Null }
-    finally { Remove-Item $vsix -Force -ErrorAction SilentlyContinue }
-    if ($LASTEXITCODE -ne 0) { Write-Host 'Installing the extension failed.' -ForegroundColor Red; return }
+    $ErrorActionPreference = 'Continue'
+    & $code --install-extension $vsix --force 2>&1 | Out-Null
+    $installed = $LASTEXITCODE -eq 0
+    $ErrorActionPreference = 'Stop'
+    Remove-Item $vsix -Force -ErrorAction SilentlyContinue
+    if (-not $installed) { Write-Host 'Installing the extension failed.' -ForegroundColor Red; return }
 
     # 4. Activate the theme in the user settings
     $dir = Join-Path $env:APPDATA 'Code\User'
