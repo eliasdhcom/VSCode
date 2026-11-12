@@ -14,7 +14,7 @@
 
 ## 🖖Introduction
 
-The official EliasDH theme for Visual Studio Code. It ships an **EliasDH Dark** and an **EliasDH Light** variant, built on the same design tokens as [EliasDH.com](https://eliasdh.com), [app.eliasdh.com](https://app.eliasdh.com) and DHMail, so your editor looks like the rest of the EliasDH platform.
+The official EliasDH theme for Visual Studio Code. It ships an **EliasDH Dark** and an **EliasDH Light** variant.
 
 Please also see following documents:
 - [LICENSE](LICENSE.md)
