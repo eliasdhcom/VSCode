@@ -22,7 +22,7 @@ P = {
         secondary="#818a92", accent="#3d587b", success="#199e70", danger="#f87171", warn="#fcd34d",
         ink="#86b6ff", focus="#3987e5", line="#80808038", lineSoft="#80808021", hover="#8080801f",
         tint="#0f54ae38", sel="#0f54ae66", selHi="#0f54ae40", shadow="#0000008c",
-        frame="#0d1016", status="#0d1016", statusFg="#818a92", statusHover="#8080801f",
+        frame="#0d1016", status="#0f54ae", statusFg="#ffffff", statusHover="#ffffff26",
         lineHl="#0d1016", panel="#0d1016", input="#0d1016",
         # syntax
         comment="#6b747d", keyword="#86b6ff", func="#5aa0f2", string="#3fbf8f", number="#e0a32e",
@@ -53,6 +53,7 @@ P = {
 def colors(c, dark):
     a = c["ansi"]
     on_primary = "#ffffff"
+    pc = c["ink"]  # primary colour as readable text
     return {
         # base
         "foreground": c["text"], "descriptionForeground": c["secondary"], "disabledForeground": c["secondary"] + "99",
@@ -82,8 +83,8 @@ def colors(c, dark):
         "dropdown.foreground": c["text"], "dropdown.listBackground": c["bg"],
         "badge.background": c["primary"], "badge.foreground": on_primary,
         "activityBarBadge.background": c["primary"], "activityBarBadge.foreground": on_primary,
-        "scrollbar.shadow": "#00000000", "scrollbarSlider.background": "#80808033",
-        "scrollbarSlider.hoverBackground": "#80808059", "scrollbarSlider.activeBackground": c["primary"] + "99",
+        "scrollbar.shadow": "#00000000", "scrollbarSlider.background": c["primary"] + "38",
+        "scrollbarSlider.hoverBackground": c["primary"] + "66", "scrollbarSlider.activeBackground": c["primary"] + "99",
         # lists
         "list.activeSelectionBackground": c["tint"], "list.activeSelectionForeground": c["ink"],
         "list.activeSelectionIconForeground": c["ink"], "list.inactiveSelectionBackground": c["hover"],
@@ -96,24 +97,26 @@ def colors(c, dark):
         "listFilterWidget.outline": c["primary"], "listFilterWidget.noMatchesOutline": c["danger"],
         "tree.indentGuidesStroke": c["line"], "tree.inactiveIndentGuidesStroke": c["lineSoft"],
         # activity bar / side bar
-        "activityBar.background": c["frame"], "activityBar.foreground": c["text"],
+        "activityBar.background": c["frame"], "activityBar.foreground": pc,
         "activityBar.inactiveForeground": c["secondary"], "activityBar.border": c["lineSoft"],
         "activityBar.activeBorder": c["primary"] if not dark else c["focus"],
         "activityBar.activeBackground": c["tint"], "activityBar.activeFocusBorder": c["focus"],
+        "activityBarTop.foreground": pc, "activityBarTop.inactiveForeground": c["secondary"],
+        "activityBarTop.activeBorder": c["primary"] if not dark else c["focus"], "activityBarTop.activeBackground": c["tint"],
         "sideBar.background": c["surface"], "sideBar.foreground": c["text"], "sideBar.border": c["lineSoft"],
-        "sideBarTitle.foreground": c["text"], "sideBarSectionHeader.background": c["surface"],
-        "sideBarSectionHeader.foreground": c["text"], "sideBarSectionHeader.border": c["lineSoft"],
+        "sideBarTitle.foreground": pc, "sideBarSectionHeader.background": c["surface"],
+        "sideBarSectionHeader.foreground": pc, "sideBarSectionHeader.border": c["lineSoft"],
         "sideBar.dropBackground": c["tint"],
         # title / menu / command center
-        "titleBar.activeBackground": c["frame"], "titleBar.activeForeground": c["text"],
-        "titleBar.inactiveBackground": c["frame"], "titleBar.inactiveForeground": c["secondary"],
-        "titleBar.border": c["lineSoft"], "menubar.selectionBackground": c["hover"],
-        "menubar.selectionForeground": c["text"], "menu.background": c["bg"], "menu.foreground": c["text"],
+        "titleBar.activeBackground": c["primary"], "titleBar.activeForeground": on_primary,
+        "titleBar.inactiveBackground": c["primary"] + "d9", "titleBar.inactiveForeground": "#ffffffb3",
+        "titleBar.border": c["primary"], "menubar.selectionBackground": "#ffffff26",
+        "menubar.selectionForeground": on_primary, "window.activeBorder": c["primary"], "window.inactiveBorder": c["line"], "menu.background": c["bg"], "menu.foreground": c["text"],
         "menu.selectionBackground": c["tint"], "menu.selectionForeground": c["ink"],
         "menu.separatorBackground": c["lineSoft"], "menu.border": c["line"],
-        "commandCenter.background": c["input"] if not dark else c["surface2"], "commandCenter.foreground": c["text"],
-        "commandCenter.border": c["line"], "commandCenter.activeBackground": c["hover"],
-        "commandCenter.inactiveForeground": c["secondary"],
+        "commandCenter.background": "#ffffff1f", "commandCenter.foreground": on_primary,
+        "commandCenter.border": "#ffffff40", "commandCenter.activeBackground": "#ffffff33", "commandCenter.activeForeground": on_primary, "commandCenter.activeBorder": "#ffffff66",
+        "commandCenter.inactiveForeground": "#ffffffb3", "commandCenter.inactiveBorder": "#ffffff26",
         # quick input / widgets
         "quickInput.background": c["bg"], "quickInput.foreground": c["text"],
         "quickInputTitle.background": c["surface"], "quickInputList.focusBackground": c["tint"],
@@ -136,7 +139,7 @@ def colors(c, dark):
         "notificationsInfoIcon.foreground": c["focus"],
         # editor
         "editor.background": c["bg"], "editor.foreground": c["text"],
-        "editorLineNumber.foreground": c["secondary"] + "80", "editorLineNumber.activeForeground": c["text"],
+        "editorLineNumber.foreground": c["secondary"] + "80", "editorLineNumber.activeForeground": pc,
         "editorCursor.foreground": c["ink"] if dark else c["primary"],
         "editor.selectionBackground": c["sel"], "editor.inactiveSelectionBackground": c["selHi"],
         "editor.selectionHighlightBackground": c["selHi"], "editor.wordHighlightBackground": c["hover"],
@@ -146,7 +149,7 @@ def colors(c, dark):
         "editor.lineHighlightBackground": c["lineHl"],
         "editor.lineHighlightBorder": "#00000000", "editor.rangeHighlightBackground": c["hover"],
         "editorLink.activeForeground": c["ink"], "editorWhitespace.foreground": c["secondary"] + "40",
-        "editorIndentGuide.background1": c["lineSoft"], "editorIndentGuide.activeBackground1": c["line"],
+        "editorIndentGuide.background1": c["lineSoft"], "editorIndentGuide.activeBackground1": c["primary"] + "80",
         "editorRuler.foreground": c["lineSoft"], "editorCodeLens.foreground": c["secondary"],
         "editorBracketMatch.background": c["tint"], "editorBracketMatch.border": c["focus"] + "99",
         "editorBracketHighlight.foreground1": c["ink"] if dark else c["keyword"],
@@ -173,7 +176,7 @@ def colors(c, dark):
         "editorGroup.border": c["lineSoft"], "editorGroup.dropBackground": c["tint"],
         "editorGroupHeader.tabsBackground": c["surface"], "editorGroupHeader.tabsBorder": c["lineSoft"],
         "editorGroupHeader.noTabsBackground": c["bg"],
-        "tab.activeBackground": c["bg"], "tab.activeForeground": c["text"],
+        "tab.activeBackground": c["bg"], "tab.activeForeground": pc,
         "tab.activeBorderTop": c["primary"] if not dark else c["focus"], "tab.activeBorder": c["bg"],
         "tab.inactiveBackground": c["surface"], "tab.inactiveForeground": c["secondary"],
         "tab.hoverBackground": c["hover"], "tab.hoverForeground": c["text"], "tab.border": c["lineSoft"],
@@ -181,11 +184,11 @@ def colors(c, dark):
         "tab.unfocusedInactiveForeground": c["secondary"] + "b3", "tab.activeModifiedBorder": c["ink"],
         "tab.inactiveModifiedBorder": c["secondary"],
         "breadcrumb.background": c["bg"], "breadcrumb.foreground": c["secondary"],
-        "breadcrumb.focusForeground": c["text"], "breadcrumb.activeSelectionForeground": c["ink"],
+        "breadcrumb.focusForeground": pc, "breadcrumb.activeSelectionForeground": c["ink"],
         "breadcrumbPicker.background": c["surface"],
         # panel / terminal
         "panel.background": c["panel"], "panel.border": c["lineSoft"],
-        "panelTitle.activeForeground": c["text"], "panelTitle.inactiveForeground": c["secondary"],
+        "panelTitle.activeForeground": pc, "panelTitle.inactiveForeground": c["secondary"],
         "panelTitle.activeBorder": c["primary"] if not dark else c["focus"],
         "panelSection.border": c["lineSoft"], "panelInput.border": c["line"],
         "terminal.background": c["panel"], "terminal.foreground": c["text"],
