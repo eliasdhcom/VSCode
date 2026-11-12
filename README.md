@@ -25,12 +25,12 @@ Please also see following documents:
 
 | Token             | Dark      | Light     |
 |-------------------|-----------|-----------|
-| Editor background | `#060709` | `#ffffff` |
-| Surface           | `#0d1016` | `#f6f7f9` |
+| Editor background | `#060709` | `#f5f8fd` |
+| Surface           | `#0d1016` | `#eaf0fa` |
 | Primary           | `#0f54ae` | `#4f94f0` |
-| Ink (accent text) | `#86b6ff` | `#4077bf` |
-| Text              | `#edeff2` | `#0c0e11` |
-| Secondary         | `#818a92` | `#6c757d` |
+| Ink (accent text) | `#86b6ff` | `#2f6fc4` |
+| Text              | `#edeff2` | `#1b2535` |
+| Secondary         | `#818a92` | `#5d6b80` |
 | Success           | `#199e70` | `#1baf7a` |
 | Danger            | `#f87171` | `#e74c3c` |
 
