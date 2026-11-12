@@ -27,7 +27,7 @@ Please also see following documents:
 |-------------------|-----------|-----------|
 | Editor background | `#060709` | `#eef3fb` |
 | Surface           | `#0d1016` | `#e1eaf7` |
-| Primary           | `#0f54ae` | `#4f94f0` |
+| Primary           | `#4f94f0` | `#4f94f0` |
 | Ink (accent text) | `#86b6ff` | `#2f6fc4` |
 | Text              | `#edeff2` | `#1b2535` |
 | Secondary         | `#818a92` | `#5d6b80` |

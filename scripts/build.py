@@ -18,11 +18,11 @@ VERSION = pkg["version"]
 # plus syntax colours derived from the chart palette.
 P = {
     "dark": dict(
-        text="#edeff2", bg="#060709", surface="#0d1016", surface2="#141924", primary="#0f54ae",
+        text="#edeff2", bg="#060709", surface="#0d1016", surface2="#141924", primary="#4f94f0",
         secondary="#818a92", accent="#3d587b", success="#199e70", danger="#f87171", warn="#fcd34d",
-        ink="#86b6ff", focus="#3987e5", line="#80808038", lineSoft="#80808021", hover="#8080801f",
-        tint="#0f54ae38", sel="#0f54ae66", selHi="#0f54ae40", shadow="#0000008c",
-        frame="#0d1016", status="#0f54ae", statusFg="#ffffff", statusHover="#ffffff26",
+        ink="#86b6ff", focus="#4f94f0", line="#80808038", lineSoft="#80808021", hover="#8080801f",
+        tint="#4f94f02e", sel="#4f94f04d", selHi="#4f94f033", shadow="#0000008c",
+        frame="#0d1016", status="#4f94f0", statusFg="#ffffff", statusHover="#ffffff26",
         lineHl="#0d1016", panel="#0d1016", input="#0d1016",
         # syntax
         comment="#6b747d", keyword="#86b6ff", func="#5aa0f2", string="#3fbf8f", number="#e0a32e",
@@ -53,7 +53,7 @@ P = {
 def colors(c, dark):
     a = c["ansi"]
     on_primary = "#ffffff"
-    pc = c["ink"]  # primary colour as readable text
+    pc = c["ink"] if not dark else c["primary"]  # primary colour as text
     return {
         # base
         "foreground": c["text"], "descriptionForeground": c["secondary"], "disabledForeground": c["secondary"] + "99",
@@ -64,10 +64,10 @@ def colors(c, dark):
         "textBlockQuote.background": c["surface2"], "textBlockQuote.border": c["primary"],
         "textCodeBlock.background": c["surface2"], "textSeparator.foreground": c["line"],
         "toolbar.hoverBackground": c["hover"], "toolbar.activeBackground": c["hover"],
-        "progressBar.background": c["primary"] if not dark else c["focus"],
+        "progressBar.background": c["primary"],
         # buttons / inputs
         "button.background": c["primary"], "button.foreground": on_primary,
-        "button.hoverBackground": c["focus"] if dark else "#3d84e4", "button.border": "#00000000",
+        "button.hoverBackground": "#3d84e4", "button.border": "#00000000",
         "button.secondaryBackground": c["surface2"], "button.secondaryForeground": c["text"],
         "button.secondaryHoverBackground": c["hover"], "button.separator": "#ffffff40",
         "checkbox.background": c["bg"] if dark else c["bg"], "checkbox.border": c["line"],
@@ -99,10 +99,10 @@ def colors(c, dark):
         # activity bar / side bar
         "activityBar.background": c["frame"], "activityBar.foreground": pc,
         "activityBar.inactiveForeground": c["secondary"], "activityBar.border": c["lineSoft"],
-        "activityBar.activeBorder": c["primary"] if not dark else c["focus"],
+        "activityBar.activeBorder": c["primary"],
         "activityBar.activeBackground": c["tint"], "activityBar.activeFocusBorder": c["focus"],
         "activityBarTop.foreground": pc, "activityBarTop.inactiveForeground": c["secondary"],
-        "activityBarTop.activeBorder": c["primary"] if not dark else c["focus"], "activityBarTop.activeBackground": c["tint"],
+        "activityBarTop.activeBorder": c["primary"], "activityBarTop.activeBackground": c["tint"],
         "sideBar.background": c["surface"], "sideBar.foreground": c["text"], "sideBar.border": c["lineSoft"],
         "sideBarTitle.foreground": pc, "sideBarSectionHeader.background": c["surface"],
         "sideBarSectionHeader.foreground": pc, "sideBarSectionHeader.border": c["lineSoft"],
@@ -121,7 +121,7 @@ def colors(c, dark):
         "quickInput.background": c["bg"], "quickInput.foreground": c["text"],
         "quickInputTitle.background": c["surface"], "quickInputList.focusBackground": c["tint"],
         "quickInputList.focusForeground": c["ink"], "quickInputList.focusIconForeground": c["ink"],
-        "pickerGroup.foreground": c["primary"] if not dark else c["focus"], "pickerGroup.border": c["lineSoft"],
+        "pickerGroup.foreground": c["primary"], "pickerGroup.border": c["lineSoft"],
         "keybindingLabel.background": c["surface2"], "keybindingLabel.foreground": c["text"],
         "keybindingLabel.border": c["line"], "keybindingLabel.bottomBorder": c["line"],
         "editorWidget.background": c["surface"], "editorWidget.foreground": c["text"],
@@ -177,7 +177,7 @@ def colors(c, dark):
         "editorGroupHeader.tabsBackground": c["surface"], "editorGroupHeader.tabsBorder": c["lineSoft"],
         "editorGroupHeader.noTabsBackground": c["bg"],
         "tab.activeBackground": c["bg"], "tab.activeForeground": pc,
-        "tab.activeBorderTop": c["primary"] if not dark else c["focus"], "tab.activeBorder": c["bg"],
+        "tab.activeBorderTop": c["primary"], "tab.activeBorder": c["bg"],
         "tab.inactiveBackground": c["surface"], "tab.inactiveForeground": c["secondary"],
         "tab.hoverBackground": c["hover"], "tab.hoverForeground": c["text"], "tab.border": c["lineSoft"],
         "tab.unfocusedActiveForeground": c["secondary"], "tab.unfocusedActiveBorderTop": c["line"],
@@ -189,7 +189,7 @@ def colors(c, dark):
         # panel / terminal
         "panel.background": c["panel"], "panel.border": c["lineSoft"],
         "panelTitle.activeForeground": pc, "panelTitle.inactiveForeground": c["secondary"],
-        "panelTitle.activeBorder": c["primary"] if not dark else c["focus"],
+        "panelTitle.activeBorder": c["primary"],
         "panelSection.border": c["lineSoft"], "panelInput.border": c["line"],
         "terminal.background": c["panel"], "terminal.foreground": c["text"],
         "terminal.selectionBackground": c["sel"], "terminalCursor.foreground": c["ink"] if dark else c["primary"],
@@ -205,9 +205,9 @@ def colors(c, dark):
         "statusBar.background": c["status"], "statusBar.foreground": c["statusFg"],
         "statusBar.border": c["lineSoft"], "statusBar.focusBorder": c["focus"],
         "statusBar.noFolderBackground": c["status"], "statusBar.noFolderForeground": c["statusFg"],
-        "statusBar.debuggingBackground": c["primary"] if dark else c["attr"], "statusBar.debuggingForeground": on_primary,
+        "statusBar.debuggingBackground": c["attr"], "statusBar.debuggingForeground": on_primary,
         "statusBarItem.hoverBackground": c["statusHover"], "statusBarItem.hoverForeground": c["statusFg"] if not dark else c["text"],
-        "statusBarItem.activeBackground": c["statusHover"], "statusBarItem.remoteBackground": c["primary"] if dark else c["ink"],
+        "statusBarItem.activeBackground": c["statusHover"], "statusBarItem.remoteBackground": "#2f6fc4",
         "statusBarItem.remoteForeground": on_primary, "statusBarItem.prominentBackground": c["statusHover"],
         "statusBarItem.errorBackground": c["danger"], "statusBarItem.errorForeground": "#ffffff",
         "statusBarItem.warningBackground": c["number"], "statusBarItem.warningForeground": "#000000",
@@ -233,7 +233,7 @@ def colors(c, dark):
         "peekViewResult.selectionBackground": c["tint"],
         "debugToolBar.background": c["surface2"], "debugIcon.breakpointForeground": c["danger"],
         "extensionButton.prominentBackground": c["primary"], "extensionButton.prominentForeground": on_primary,
-        "extensionButton.prominentHoverBackground": c["focus"] if dark else "#3d84e4",
+        "extensionButton.prominentHoverBackground": "#3d84e4",
         "extensionBadge.remoteBackground": c["primary"], "extensionBadge.remoteForeground": on_primary,
         "settings.headerForeground": c["text"], "settings.modifiedItemIndicator": c["focus"],
         "settings.focusedRowBackground": c["hover"], "settings.rowHoverBackground": c["hover"] ,
