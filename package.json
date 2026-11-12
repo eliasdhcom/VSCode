@@ -1,0 +1,47 @@
+{
+    "name": "eliasdh-theme",
+    "displayName": "EliasDH Theme",
+    "description": "Dark and light VS Code theme matching EliasDH.com, app.eliasdh.com and DHMail.",
+    "version": "1.0.0",
+    "publisher": "EliasDH",
+    "author": "EliasDH Team",
+    "license": "SEE LICENSE IN LICENSE.md",
+    "homepage": "https://eliasdh.com",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/eliasdhcom/VSCode.git"
+    },
+    "icon": "icon.png",
+    "galleryBanner": {
+        "color": "#060709",
+        "theme": "dark"
+    },
+    "engines": {
+        "vscode": "^1.70.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "keywords": [
+        "theme",
+        "color-theme",
+        "dark",
+        "light",
+        "blue",
+        "eliasdh"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "EliasDH Dark",
+                "uiTheme": "vs-dark",
+                "path": "./themes/eliasdh-dark-color-theme.json"
+            },
+            {
+                "label": "EliasDH Light",
+                "uiTheme": "vs",
+                "path": "./themes/eliasdh-light-color-theme.json"
+            }
+        ]
+    }
+}

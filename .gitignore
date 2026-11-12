@@ -1,0 +1,12 @@
+############################
+# @author EliasDH Team     #
+# @see https://eliasdh.com #
+# @since 12/11/2026        #
+############################
+# Ignore default
+.vscode
+.claude
+
+node_modules
+__pycache__
+*.pyc
