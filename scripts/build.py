@@ -34,12 +34,12 @@ P = {
     ),
     "light": dict(
         # blue-tinted surfaces so the light variant carries the EliasDH blue instead of plain white
-        text="#1b2535", bg="#f5f8fd", surface="#eaf0fa", surface2="#dfe8f6", primary="#4f94f0",
+        text="#1b2535", bg="#eef3fb", surface="#e1eaf7", surface2="#d3e0f3", primary="#4f94f0",
         secondary="#5d6b80", accent="#829ec2", success="#1baf7a", danger="#e74c3c", warn="#92400e",
-        ink="#2f6fc4", focus="#4f94f0", line="#4f94f038", lineSoft="#4f94f024", hover="#4f94f01a",
-        tint="#4f94f029", sel="#4f94f047", selHi="#4f94f029", shadow="#1f3b6626",
-        frame="#dbe6f6", status="#4f94f0", statusFg="#ffffff", statusHover="#ffffff26",
-        lineHl="#e7effb", panel="#eef3fb", input="#ffffff",
+        ink="#2f6fc4", focus="#4f94f0", line="#4f94f055", lineSoft="#4f94f038", hover="#4f94f024",
+        tint="#4f94f038", sel="#4f94f055", selHi="#4f94f033", shadow="#1f3b6626",
+        frame="#cfdef4", status="#4f94f0", statusFg="#ffffff", statusHover="#ffffff26",
+        lineHl="#e0eaf8", panel="#e1eaf7", input="#f7faff",
         comment="#6f7d92", keyword="#2a64b8", func="#1d6ccc", string="#12855c", number="#a86500",
         type="#c4457a", attr="#c8501f", prop="#3d587b", param="#4a5a70", punct="#5d6b80",
         ansi=dict(black="#1b2535", red="#d64545", green="#12855c", yellow="#a86500", blue="#2a78d6",

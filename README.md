@@ -25,8 +25,8 @@ Please also see following documents:
 
 | Token             | Dark      | Light     |
 |-------------------|-----------|-----------|
-| Editor background | `#060709` | `#f5f8fd` |
-| Surface           | `#0d1016` | `#eaf0fa` |
+| Editor background | `#060709` | `#eef3fb` |
+| Surface           | `#0d1016` | `#e1eaf7` |
 | Primary           | `#0f54ae` | `#4f94f0` |
 | Ink (accent text) | `#86b6ff` | `#2f6fc4` |
 | Text              | `#edeff2` | `#1b2535` |

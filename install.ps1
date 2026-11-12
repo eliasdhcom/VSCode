@@ -58,4 +58,5 @@
     [IO.File]::WriteAllText($settings, $json, (New-Object Text.UTF8Encoding $false))
 
     Write-Host "$themeName installed and activated." -ForegroundColor Green
+    Write-Host 'Already had VS Code open? Reload it: Ctrl+Shift+P > "Developer: Reload Window".' -ForegroundColor DarkGray
 }
